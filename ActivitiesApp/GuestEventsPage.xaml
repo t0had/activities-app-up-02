@@ -1,0 +1,113 @@
+﻿<Page x:Class="ActivitiesApp.Pages.GuestEventsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Мероприятия"
+      Background="{StaticResource AppWhite}"
+      FontFamily="Segoe UI">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource AppAccent}">
+            <Grid Margin="24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Доступные мероприятия"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           VerticalAlignment="Center"/>
+
+                <Button Grid.Column="1"
+                        Content="Войти"
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Click="BtnLogin_Click"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="{StaticResource AppSoft}"
+                    CornerRadius="16"
+                    Padding="16"
+                    Margin="0,0,0,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock Text="Поиск по направлению"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="TbSearchDirection"
+                                 Height="32"
+                                 Margin="0,6,0,0"
+                                 TextChanged="FilterChanged"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Margin="16,0,0,0">
+                        <TextBlock Text="Дата"
+                                   FontWeight="SemiBold"/>
+                        <DatePicker x:Name="DpDate"
+                                    Margin="0,6,0,0"
+                                    SelectedDateChanged="FilterChanged"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1"
+                    BorderBrush="{StaticResource AppAccent}"
+                    BorderThickness="1"
+                    CornerRadius="16"
+                    Padding="12">
+                <ListView x:Name="LvEvents"
+                          MouseDoubleClick="LvEvents_MouseDoubleClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource AppSoft}"
+                                    CornerRadius="12"
+                                    Padding="12"
+                                    Margin="0,0,0,12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="140"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource AppAccent}"/>
+
+                                        <TextBlock Text="{Binding Города.Name}"
+                                                   Margin="0,4,0,0"/>
+                                    </StackPanel>
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Date}"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

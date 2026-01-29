@@ -1,0 +1,113 @@
+﻿<Window x:Class="ActivitiesApp.Windows.ActivityEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактирование активности"
+        Width="700" Height="460"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource AppWhite}"
+        FontFamily="Segoe UI">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource AppAccent}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20">
+                <Ellipse Width="42" Height="42" Fill="White" Opacity="0.25"/>
+                <TextBlock x:Name="TbTitle"
+                           Text="Активность"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           Margin="14,0,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="{StaticResource AppSoft}"
+                    CornerRadius="14"
+                    Padding="16"
+                    Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Информация"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="0,0,0,12"/>
+
+                    <TextBlock Text="ID"/>
+                    <TextBox x:Name="TbId"
+                             IsReadOnly="True"
+                             Margin="0,4,0,12"/>
+
+                    <TextBlock Text="Продолжительность"/>
+                    <TextBox Text="90 минут"
+                             IsReadOnly="True"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1"
+                    BorderBrush="{StaticResource AppAccent}"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0,0,0,14">
+                        <TextBlock Text="Название активности"/>
+                        <TextBox x:Name="TbName" Height="32"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Margin="0,0,0,14">
+                        <TextBlock Text="Мероприятие"/>
+                        <ComboBox x:Name="CbEvent"
+                                  DisplayMemberPath="Name"
+                                  Height="32"
+                                  SelectionChanged="CbEvent_SelectionChanged"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="Время начала"/>
+                        <ComboBox x:Name="CbStartTime"
+                                  Height="32"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2"
+                Background="{StaticResource AppSoft}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="20">
+                <Button Content="Отмена"
+                        Width="120"
+                        Margin="0,0,12,0"
+                        Background="Transparent"
+                        Foreground="Black"
+                        Click="BtnCancel_Click"/>
+
+                <Button Content="Сохранить"
+                        Width="140"
+                        FontWeight="SemiBold"
+                        Click="BtnSave_Click"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
