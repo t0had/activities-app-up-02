@@ -28,7 +28,7 @@ namespace ActivitiesApp.Pages
             var now = DateTime.Now.Hour;
 
             var tod = now < 12 ? "утро" : (now < 18 ? "день" : "вечер");
-            return $"Доброе {tod}, {name} {patronymic}!".Trim();
+            return $"Добрый {tod}, {name} {patronymic}!".Trim();
         }
 
         private void LoadPhoto(string relativePath)
